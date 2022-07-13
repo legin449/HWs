@@ -9,7 +9,7 @@ namespace HW11
 {
     internal class Manager : Consult
     {
-        public new string Name = "Менеджер";
+        public new string Name { get; set; }
 
         public override void Init(TextBox FirstName, TextBox LastName, TextBox MiddleName, TextBox PhoneNumber, TextBox Passport)
         {
@@ -19,9 +19,9 @@ namespace HW11
             MiddleName.IsReadOnly = false;
             Passport.IsReadOnly = false;
         }
-        public override void ShowClientData(Client client, TextBox FirstName, TextBox LastName, TextBox MiddleName, TextBox PhoneNumber, TextBox Passport)
+        public override void ShowClientData(Client client, TextBox FirstName, TextBox LastName, TextBox MiddleName, TextBox PhoneNumber, TextBox Passport, TextBlock Changes)
         {
-            base.ShowClientData(client, FirstName, LastName, MiddleName, PhoneNumber, Passport);
+            base.ShowClientData(client, FirstName, LastName, MiddleName, PhoneNumber, Passport, Changes);
             Passport.Text = client.Passport;
         }
         public override bool ChangeClientData(Client client, Client newClient)

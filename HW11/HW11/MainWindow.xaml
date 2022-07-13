@@ -75,23 +75,23 @@
             />
         </Border>
         <TextBox Style="{StaticResource NamingStyle}" 
-            Margin="70,200,0,0" 
+            Margin="11,208,0,0" 
             TextWrapping="Wrap" 
             VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"
             x:Name="FirstName"
             />
         <TextBox Style="{StaticResource NamingStyle}" 
-                 Margin="210,200,0,0" 
+                 Margin="151,208,0,0" 
                  TextWrapping="Wrap" 
                  VerticalAlignment="Top"
-                 x:Name="LastName"/>
+                 x:Name="LastName" Grid.Column="1" Grid.Row="1"/>
         <TextBox Style="{StaticResource NamingStyle}" 
-                 Margin="350,200,0,0" 
+                 Margin="291,208,0,0" 
                  TextWrapping="Wrap" 
                  VerticalAlignment="Top"
-                 x:Name="MiddleName"/>
+                 x:Name="MiddleName" Grid.Column="1" Grid.Row="1"/>
         <TextBox Style="{StaticResource NamingStyle}" 
-                 Margin="155,258,0,0" 
+                 Margin="116,262,0,0" 
                  TextWrapping="Wrap" 
                  VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" Width="210"
                  x:Name="Passport" IsReadOnlyCaretVisible="True"/>
@@ -104,34 +104,34 @@
                 Width="192"
                 Click="Add_NewClient"/>
         <TextBox Style="{StaticResource NamingStyle}" 
-            Margin="155,310,0,0" 
+            Margin="116,314,0,0" 
             TextWrapping="Wrap" 
             VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" Width="210"
             x:Name="PhoneNumber"/>
         <TextBlock Style="{StaticResource AboutText}" 
-                   Margin="108,179,0,0" 
-                   Grid.Row="1">
+                   Margin="49,0,0,0" 
+                   Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
             <Run Text="Имя" BaselineAlignment="Center"/>
         </TextBlock>
         <TextBlock Style="{StaticResource AboutText}" 
-                   Margin="375,179,0,0" 
-                   Grid.Row="1">
+                   Margin="316,0,0,0" 
+                   Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
             <Run Text="Отчество" BaselineAlignment="Center"/>
         </TextBlock>
         <TextBlock Style="{StaticResource AboutText}" 
-                   Margin="235,179,0,0" Grid.Row="1">
+                   Margin="176,0,0,0" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
             <Run Text="Фамилия" BaselineAlignment="Center"/>
         </TextBlock>
         <TextBlock Style="{StaticResource AboutText}" 
-                   Margin="97,264,0,0" 
+                   Margin="58,268,0,0" 
                    Grid.Row="1" 
-                   Height="24">
+                   Height="24" Grid.Column="1">
             <Run BaselineAlignment="Center" Text="Паспорт"/>
         </TextBlock>
         <TextBlock Style="{StaticResource AboutText}" 
-                   Margin="50,316,0,0" 
+                   Margin="11,320,0,0" 
                    Grid.Row="1" 
-                   Height="24">
+                   Height="24" Grid.Column="1">
             <Run BaselineAlignment="Center" 
                  Text="Номер телефона"/>
         </TextBlock>
@@ -159,6 +159,6 @@
             <ComboBoxItem>Manager</ComboBoxItem>
             <ComboBoxItem>Consult</ComboBoxItem>
         </ComboBox>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="291,42,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Height="123" Width="218"><Run Language="ru-ru" Text="За последнее время изменений не было"/></TextBlock>
+        <TextBlock x:Name="ChangeText" Grid.Column="1" HorizontalAlignment="Left" Margin="394,42,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Height="281" Width="144"><Run Language="ru-ru" Text="За последнее время изменений не было"/></TextBlock>
     </Grid>
 </Window>

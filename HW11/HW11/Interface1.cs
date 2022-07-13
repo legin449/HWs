@@ -8,6 +8,6 @@ namespace HW11
 {
     internal interface Changes
     {
-        Dictionary<string,string> WasChanged(Client originClient, Client newClient, string TypeOfChanges);
+        Dictionary<string,string> WasChanged(Client originClient, Client newClient, string TypeOfChanges, string worker);
     }
 }

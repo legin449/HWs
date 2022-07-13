@@ -10,7 +10,8 @@ namespace HW11
 {
     class Consult : Changes
     {
-        public string Name = "Консультант";
+        public string Name { get; set; }
+        
         /// <summary>
         /// Initialization of client for displaying on window
         /// </summary>
@@ -26,7 +27,6 @@ namespace HW11
             MiddleName.IsReadOnly = true;
             PhoneNumber.IsReadOnly = false;
             Passport.IsReadOnly = true;
-            
         }
         /// <summary>
         /// Showing data about client
@@ -37,16 +37,21 @@ namespace HW11
         /// <param name="MiddleName"></param>
         /// <param name="PhoneNumber"></param>
         /// <param name="Passport"></param>
-        public virtual void ShowClientData(Client client, TextBox FirstName, TextBox LastName, TextBox MiddleName, TextBox PhoneNumber, TextBox Passport)
+        public virtual void ShowClientData(Client client, TextBox FirstName, TextBox LastName, TextBox MiddleName, TextBox PhoneNumber, TextBox Passport, TextBlock Changes)
         {
             if (!string.IsNullOrEmpty(client.Passport))
             {
                 Passport.Text = "**********";
-                FirstName.Text = client.FirstName;
-                LastName.Text = client.LastName;
-                MiddleName.Text = client.MiddleName;
-                PhoneNumber.Text = client.PhoneNumber;
             }
+            else
+            {
+                Passport.Text = "";
+            }
+            FirstName.Text = client.FirstName;
+            LastName.Text = client.LastName;
+            MiddleName.Text = client.MiddleName;
+            PhoneNumber.Text = client.PhoneNumber;
+            Changes.Text = client.TypeOfChanges;
         }
         /// <summary>
         /// Changing data about client (only phone number)
@@ -72,7 +77,7 @@ namespace HW11
             }
             return WasUpdated;
         }
-        Dictionary<string, string> Changes.WasChanged(Client originClient, Client newClient, string TypeOfChanges)
+        Dictionary<string, string> Changes.WasChanged(Client originClient, Client newClient, string TypeOfChanges, string worker)
         {
             #region
             //List<string> origClientList = originClient.Serialization().Split(';').ToList<string>(); ;
@@ -105,15 +110,15 @@ namespace HW11
             {
                 Changes += "Номер телефона был изменен;";
             }
-            if(!(originClient.Passport != newClient.Passport))
+            if(!(originClient.Passport == newClient.Passport))
             {
                 Changes += "Паспорт был изменен;";
             }
-            Changes += $"\nКем были выполнены изменения:\n{this.Name}\nТип изменений: {TypeOfChanges}\nКогда было изменено: {Date}";
+            Changes += $"\nКем были выполнены изменения:\n{worker}\nТип изменений: {TypeOfChanges}\nКогда было изменено: {Date}";
             ChangesInfo["Дата"] = Date;
             ChangesInfo["Изменения"] = Changes;
             ChangesInfo["Тип изменений"] = TypeOfChanges;
-            ChangesInfo["Сотрудник"] = this.Name;
+            ChangesInfo["Сотрудник"] = worker;
             return ChangesInfo;
         }
     }

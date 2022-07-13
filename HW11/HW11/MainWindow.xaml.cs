@@ -67,7 +67,16 @@ namespace HW11
         Client GetClient(string Info)
         {
             var infoSplitted = Info.Split(';');
-            Client client = new Client(infoSplitted[0], infoSplitted[1], infoSplitted[2], infoSplitted[3], infoSplitted[4], infoSplitted[5], infoSplitted[6], infoSplitted[7], infoSplitted[8]);
+            Client client = new Client(
+                infoSplitted[0], 
+                infoSplitted[1],
+                infoSplitted[2],
+                infoSplitted[3],
+                infoSplitted[4],
+                infoSplitted[5],
+                infoSplitted[6],
+                infoSplitted[7],
+                infoSplitted[8]);
             return client;
         }
         
@@ -84,7 +93,7 @@ namespace HW11
                 "Фамилия " + k.ToString(),
                 "Отчество " + k.ToString(),
                 randomize.Next(89000000, 89999999).ToString(),
-                randomize.Next(9000000, 9999999).ToString(), "","","","");
+                randomize.Next(9000000, 9999999).ToString(), DateTime.Now.ToString(),consult.Name,"", $"{consult.Name} добавил новую запись");
             Clients.Add(newClient);
 
             ClientData.ItemsSource = Clients;
@@ -101,7 +110,7 @@ namespace HW11
             Client selecteditem = ClientData.SelectedItem as Client;
             if (selecteditem != null)
             {
-                consult.ShowClientData(selecteditem, FirstName, LastName, MiddleName, PhoneNumber, Passport);
+                consult.ShowClientData(selecteditem, FirstName, LastName, MiddleName, PhoneNumber, Passport, ChangeText);
                 UpdateClientButton.IsEnabled = true;
             }
             else
@@ -120,8 +129,8 @@ namespace HW11
             Dictionary<string, string> ChangesInfo = new Dictionary<string, string>();
             Client selecteditem = ClientData.SelectedItem as Client;
             Client newClient = new Client(FirstName.Text, LastName.Text,MiddleName.Text,PhoneNumber.Text,Passport.Text,"","","","");
-            ChangesInfo = interfaceChanges.WasChanged(selecteditem, newClient, "Обновление данных");
-            newClient = new Client(FirstName.Text, LastName.Text, MiddleName.Text, PhoneNumber.Text, Passport.Text, ChangesInfo["Дата"], ChangesInfo["Изменения"], ChangesInfo["Тип изменений"], ChangesInfo["Сотрудник"]);
+            ChangesInfo = interfaceChanges.WasChanged(selecteditem, newClient, "Обновление данных", consult.Name);
+            newClient = new Client(FirstName.Text, LastName.Text, MiddleName.Text, PhoneNumber.Text, Passport.Text, ChangesInfo["Дата"], ChangesInfo["Сотрудник"], ChangesInfo["Тип изменений"], ChangesInfo["Изменения"]);
             bool WasUpdated = false;
             WasUpdated = consult.ChangeClientData(selecteditem, newClient);
             if (!WasUpdated)
@@ -130,9 +139,10 @@ namespace HW11
             }
             else
             {
-                selecteditem = new Client(selecteditem.FirstName, selecteditem.LastName, selecteditem.MiddleName, selecteditem.PhoneNumber, selecteditem.Passport, ChangesInfo["Дата"], ChangesInfo["Изменения"], ChangesInfo["Тип изменений"], ChangesInfo["Сотрудник"]);
+                selecteditem = new Client(selecteditem.FirstName, selecteditem.LastName, selecteditem.MiddleName, selecteditem.PhoneNumber, selecteditem.Passport, ChangesInfo["Дата"], consult.Name, ChangesInfo["Тип изменений"], ChangesInfo["Изменения"]);
                 File.WriteAllText(ClientsPath, JsonConvert.SerializeObject(Clients));
                 MessageBox.Show("Данные были успешно обновлены");
+                ChangeText.Text = selecteditem.TypeOfChanges;
             }
         }
         /// <summary>
@@ -148,12 +158,14 @@ namespace HW11
                 consult = new Consult();
                 LoadClient.IsEnabled = true;
                 consult.Init(FirstName, LastName, MiddleName, PhoneNumber, Passport);
+                consult.Name = "Консультант";
             }
             else if (SelectedMode.Content.ToString() == "Manager")
             {
                 consult = new Manager();
                 LoadClient.IsEnabled = true;
                 consult.Init(FirstName, LastName, MiddleName, PhoneNumber, Passport);
+                consult.Name = "Менеджер";
             }
         }
     }
