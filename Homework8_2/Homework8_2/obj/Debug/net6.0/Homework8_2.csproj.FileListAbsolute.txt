@@ -1,0 +1,15 @@
+D:\SkillBox\Homework8_2\Homework8_2\bin\Debug\net6.0\Homework8_2.exe
+D:\SkillBox\Homework8_2\Homework8_2\bin\Debug\net6.0\Homework8_2.deps.json
+D:\SkillBox\Homework8_2\Homework8_2\bin\Debug\net6.0\Homework8_2.runtimeconfig.json
+D:\SkillBox\Homework8_2\Homework8_2\bin\Debug\net6.0\Homework8_2.dll
+D:\SkillBox\Homework8_2\Homework8_2\bin\Debug\net6.0\Homework8_2.pdb
+D:\SkillBox\Homework8_2\Homework8_2\obj\Debug\net6.0\Homework8_2.csproj.AssemblyReference.cache
+D:\SkillBox\Homework8_2\Homework8_2\obj\Debug\net6.0\Homework8_2.GeneratedMSBuildEditorConfig.editorconfig
+D:\SkillBox\Homework8_2\Homework8_2\obj\Debug\net6.0\Homework8_2.AssemblyInfoInputs.cache
+D:\SkillBox\Homework8_2\Homework8_2\obj\Debug\net6.0\Homework8_2.AssemblyInfo.cs
+D:\SkillBox\Homework8_2\Homework8_2\obj\Debug\net6.0\Homework8_2.csproj.CoreCompileInputs.cache
+D:\SkillBox\Homework8_2\Homework8_2\obj\Debug\net6.0\Homework8_2.dll
+D:\SkillBox\Homework8_2\Homework8_2\obj\Debug\net6.0\refint\Homework8_2.dll
+D:\SkillBox\Homework8_2\Homework8_2\obj\Debug\net6.0\Homework8_2.pdb
+D:\SkillBox\Homework8_2\Homework8_2\obj\Debug\net6.0\Homework8_2.genruntimeconfig.cache
+D:\SkillBox\Homework8_2\Homework8_2\obj\Debug\net6.0\ref\Homework8_2.dll

@@ -1,0 +1,11 @@
+<Person>Oleg
+	<Address>
+		<Street>Chusovaya</Street>
+		<HouseNumber>2</HouseNumber>
+		<FlatNumber>1</FlatNumber>
+	</Address>
+	<Phones>
+		<MobilePhone>123</MobilePhone>
+		<FlatPhone>321</FlatPhone>
+	</Phones>
+</Person>

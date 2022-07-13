@@ -1,0 +1,15 @@
+D:\SkillBox\Homework7\Homework7\obj\Debug\net6.0\Homework7.csproj.AssemblyReference.cache
+D:\SkillBox\Homework7\Homework7\obj\Debug\net6.0\Homework7.GeneratedMSBuildEditorConfig.editorconfig
+D:\SkillBox\Homework7\Homework7\obj\Debug\net6.0\Homework7.AssemblyInfoInputs.cache
+D:\SkillBox\Homework7\Homework7\obj\Debug\net6.0\Homework7.AssemblyInfo.cs
+D:\SkillBox\Homework7\Homework7\obj\Debug\net6.0\Homework7.csproj.CoreCompileInputs.cache
+D:\SkillBox\Homework7\Homework7\bin\Debug\net6.0\Homework7.exe
+D:\SkillBox\Homework7\Homework7\bin\Debug\net6.0\Homework7.deps.json
+D:\SkillBox\Homework7\Homework7\bin\Debug\net6.0\Homework7.runtimeconfig.json
+D:\SkillBox\Homework7\Homework7\bin\Debug\net6.0\Homework7.dll
+D:\SkillBox\Homework7\Homework7\bin\Debug\net6.0\Homework7.pdb
+D:\SkillBox\Homework7\Homework7\obj\Debug\net6.0\Homework7.dll
+D:\SkillBox\Homework7\Homework7\obj\Debug\net6.0\refint\Homework7.dll
+D:\SkillBox\Homework7\Homework7\obj\Debug\net6.0\Homework7.pdb
+D:\SkillBox\Homework7\Homework7\obj\Debug\net6.0\Homework7.genruntimeconfig.cache
+D:\SkillBox\Homework7\Homework7\obj\Debug\net6.0\ref\Homework7.dll

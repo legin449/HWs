@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "6BGpZaGd0O2y7L4LKNIitOvJpfhLabxxkAyk/CoCWT5+1L20238VPG0vSUg0p422Z45hZKlvCUzO7Y2AOLMgtQ==",
+  "success": true,
+  "projectFilePath": "D:\\SkillBox\\Homework9\\Homework9\\Homework9.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\oleg_\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "C:\\Users\\oleg_\\.nuget\\packages\\telegram.bot\\17.0.0\\telegram.bot.17.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
