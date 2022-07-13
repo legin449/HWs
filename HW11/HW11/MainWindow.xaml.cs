@@ -15,6 +15,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
 using System.IO;
+using System.Collections.Specialized;
+
 
 
 namespace HW11
@@ -31,6 +33,8 @@ namespace HW11
         ObservableCollection<Client> Clients = new ObservableCollection<Client>();
 
         Consult consult;
+        Changes interfaceChanges = new Consult();
+
 
         public MainWindow()
         {
@@ -47,16 +51,26 @@ namespace HW11
         /// <returns></returns>
         ObservableCollection<Client> LoadClients()
         {
-            if(File.Exists(ClientsPath))
+            string jsonText;
+            Dictionary<string, string> TempDict = new Dictionary<string, string>();
+            if (File.Exists(ClientsPath))
             {
-                var jsonText = File.ReadAllText(ClientsPath);
+                jsonText = File.ReadAllText(ClientsPath);
                 if (!string.IsNullOrEmpty(jsonText))
                 {
                     Clients = JsonConvert.DeserializeObject<ObservableCollection<Client>>(jsonText);
+                    jsonText = null;
                 }
             }
             return Clients;
         }
+        Client GetClient(string Info)
+        {
+            var infoSplitted = Info.Split(';');
+            Client client = new Client(infoSplitted[0], infoSplitted[1], infoSplitted[2], infoSplitted[3], infoSplitted[4], infoSplitted[5], infoSplitted[6], infoSplitted[7], infoSplitted[8]);
+            return client;
+        }
+        
         /// <summary>
         /// Add random client (for testing)
         /// </summary>
@@ -66,11 +80,12 @@ namespace HW11
         {
             Random randomize = new Random();
             var k = Clients.Count() + 1;
-            Clients.Add(new Client("Имя " + k.ToString(),
+            Client newClient = new Client("Имя " + k.ToString(),
                 "Фамилия " + k.ToString(),
                 "Отчество " + k.ToString(),
                 randomize.Next(89000000, 89999999).ToString(),
-                randomize.Next(9000000, 9999999).ToString()));
+                randomize.Next(9000000, 9999999).ToString(), "","","","");
+            Clients.Add(newClient);
 
             ClientData.ItemsSource = Clients;
             File.WriteAllText(ClientsPath, JsonConvert.SerializeObject(Clients));
@@ -102,8 +117,11 @@ namespace HW11
         /// <param name="e"></param>
         private void UpdateClient(object sender, RoutedEventArgs e)
         {
+            Dictionary<string, string> ChangesInfo = new Dictionary<string, string>();
             Client selecteditem = ClientData.SelectedItem as Client;
-            Client newClient = new Client(FirstName.Text, LastName.Text,MiddleName.Text,PhoneNumber.Text,Passport.Text);
+            Client newClient = new Client(FirstName.Text, LastName.Text,MiddleName.Text,PhoneNumber.Text,Passport.Text,"","","","");
+            ChangesInfo = interfaceChanges.WasChanged(selecteditem, newClient, "Обновление данных");
+            newClient = new Client(FirstName.Text, LastName.Text, MiddleName.Text, PhoneNumber.Text, Passport.Text, ChangesInfo["Дата"], ChangesInfo["Изменения"], ChangesInfo["Тип изменений"], ChangesInfo["Сотрудник"]);
             bool WasUpdated = false;
             WasUpdated = consult.ChangeClientData(selecteditem, newClient);
             if (!WasUpdated)
@@ -112,6 +130,7 @@ namespace HW11
             }
             else
             {
+                selecteditem = new Client(selecteditem.FirstName, selecteditem.LastName, selecteditem.MiddleName, selecteditem.PhoneNumber, selecteditem.Passport, ChangesInfo["Дата"], ChangesInfo["Изменения"], ChangesInfo["Тип изменений"], ChangesInfo["Сотрудник"]);
                 File.WriteAllText(ClientsPath, JsonConvert.SerializeObject(Clients));
                 MessageBox.Show("Данные были успешно обновлены");
             }

@@ -9,6 +9,8 @@ namespace HW11
 {
     internal class Manager : Consult
     {
+        public new string Name = "Менеджер";
+
         public override void Init(TextBox FirstName, TextBox LastName, TextBox MiddleName, TextBox PhoneNumber, TextBox Passport)
         {
             base.Init(FirstName, LastName, MiddleName, PhoneNumber, Passport);
@@ -30,7 +32,6 @@ namespace HW11
             client.MiddleName = newClient.MiddleName;
             client.Passport = newClient.Passport;
             return base.ChangeClientData(client, newClient);
-
         }
     }
 }

@@ -8,8 +8,9 @@ using System.Windows.Controls;
 
 namespace HW11
 {
-    class Consult
+    class Consult : Changes
     {
+        public string Name = "Консультант";
         /// <summary>
         /// Initialization of client for displaying on window
         /// </summary>
@@ -60,13 +61,60 @@ namespace HW11
             {
                 client.PhoneNumber = newClient.PhoneNumber;
                 WasUpdated = true;
-
+                client.DateOfChanges = newClient.DateOfChanges;
+                client.TypeOfChanges = newClient.TypeOfChanges;
+                client.WasChanged = newClient.WasChanged;
+                client.ChangedBy = newClient.ChangedBy;
             }
             else
             {
                 WasUpdated = false;
             }
             return WasUpdated;
+        }
+        Dictionary<string, string> Changes.WasChanged(Client originClient, Client newClient, string TypeOfChanges)
+        {
+            #region
+            //List<string> origClientList = originClient.Serialization().Split(';').ToList<string>(); ;
+            //List<string> newClientList = newClient.Serialization().Split(';').ToList<string>();
+            //foreach(string s in origClientList)
+            //{
+            //    var index = origClientList.IndexOf(s);
+            //    if (origClientList[index] == newClientList[index])
+            //    {
+
+            //    }
+            //}
+            #endregion
+            Dictionary<string, string> ChangesInfo = new Dictionary<string, string>();
+            string Changes = "";
+            string Date = DateTime.Now.ToString();
+            if(!(originClient.FirstName == newClient.FirstName))
+            {
+                Changes += "Имя было изменено;";
+            }
+            if(!(originClient.LastName == newClient.LastName))
+            {
+                Changes += "Фамилия была изменена;";
+            }
+            if(!(originClient.MiddleName == newClient.MiddleName))
+            {
+                Changes += "Отчество было изменено;";
+            }
+            if(!(originClient.PhoneNumber == newClient.PhoneNumber))
+            {
+                Changes += "Номер телефона был изменен;";
+            }
+            if(!(originClient.Passport != newClient.Passport))
+            {
+                Changes += "Паспорт был изменен;";
+            }
+            Changes += $"\nКем были выполнены изменения:\n{this.Name}\nТип изменений: {TypeOfChanges}\nКогда было изменено: {Date}";
+            ChangesInfo["Дата"] = Date;
+            ChangesInfo["Изменения"] = Changes;
+            ChangesInfo["Тип изменений"] = TypeOfChanges;
+            ChangesInfo["Сотрудник"] = this.Name;
+            return ChangesInfo;
         }
     }
 }
